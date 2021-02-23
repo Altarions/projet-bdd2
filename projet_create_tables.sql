@@ -7,6 +7,7 @@ DROP TABLE OEUVRE CASCADE CONSTRAINTS;
 DROP TABLE VISIONNAGE CASCADE CONSTRAINTS;
 DROP TABLE COMPTE CASCADE CONSTRAINTS;
 DROP TABLE SOUS_COMPTE CASCADE CONSTRAINTS;
+DROP TABLE CLES CASCADE CONSTRAINTS;
 
 prompt *************************************************************
 prompt ******************** CREATE TABLE ***************************
@@ -43,6 +44,18 @@ CREATE TABLE COMPTE (
     CONSTRAINT pk_compte PRIMARY KEY(mail)
 );
 
+
+
+CREATE TABLE SOUS_COMPTE (
+    mail VARCHAR(50),
+    id_sousCompte NUMBER,
+    profil VARCHAR(50),
+    liste VARCHAR(50),
+    like_oeuvre VARCHAR(50),
+    CONSTRAINT pk_sous_compte PRIMARY KEY(id_sousCompte,mail),
+    CONSTRAINT fk_sous_compte FOREIGN KEY (mail) REFERENCES COMPTE (mail)
+);
+
 CREATE TABLE VISIONNAGE (
     mail VARCHAR(50),
     id_sousCompte NUMBER,
@@ -54,16 +67,6 @@ CREATE TABLE VISIONNAGE (
     CONSTRAINT fk_visionnage_Oeuvre FOREIGN KEY (id_oeuvre, num_saison, num_episode) REFERENCES OEUVRE(id_oeuvre, num_saison, num_episode),
     CONSTRAINT fk_visionnage_compte FOREIGN KEY (mail) REFERENCES COMPTE(mail),
     CONSTRAINT fk_visionnage_sousCompte FOREIGN KEY (id_sousCompte) REFERENCES SOUS_COMPTE(id_sousCompte)
-);
-
-CREATE TABLE SOUS_COMPTE (
-    mail VARCHAR(50),
-    id_sousCompte NUMBER,
-    profil VARCHAR(50),
-    liste VARCHAR(50),
-    like_oeuvre VARCHAR(50),
-    CONSTRAINT pk_sous_compte PRIMARY KEY(id_sousCompte,mail),
-    CONSTRAINT fk_sous_compte FOREIGN KEY (mail) REFERENCES COMPTE (mail)
 );
 
 CREATE TABLE CLES
