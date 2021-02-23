@@ -6,7 +6,6 @@ DELETE FROM NOM_OEUVRE;
 DELETE FROM OEUVRE;
 DELETE FROM VISIONNAGE;
 DELETE FROM COMPTE;
-DELETE FROM 
 
 prompt *************************************************************
 prompt ******************** INSERT TUPLES **************************
