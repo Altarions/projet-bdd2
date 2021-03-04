@@ -13,6 +13,11 @@ prompt *************************************************************
 prompt ******************** CREATE TABLE ***************************
 prompt *************************************************************
 
+CREATE TABLE NOM_OEUVRE (
+    id_oeuvre NUMBER,
+    nom_oeuvre VARCHAR(50),
+    CONSTRAINT pk_nom_oeuvre PRIMARY KEY (id_oeuvre)
+);
 
 CREATE TABLE OEUVRE (
     id_oeuvre NUMBER,
@@ -26,14 +31,8 @@ CREATE TABLE OEUVRE (
     descriptif VARCHAR(50),
     genres VARCHAR(50),
     adjectif VARCHAR(50),
-    CONSTRAINT pk_oeuvre PRIMARY KEY(id_oeuvre,num_saison,num_episode)
-);
-
-CREATE TABLE NOM_OEUVRE (
-    id_oeuvre NUMBER,
-    nom_oeuvre VARCHAR(50),
-    CONSTRAINT pk_nom_oeuvre PRIMARY KEY (id_oeuvre),
-    CONSTRAINT fk_nom_oeuvre FOREIGN KEY(id_oeuvre) REFERENCES OEUVRE(id_oeuvre)
+    CONSTRAINT pk_oeuvre PRIMARY KEY(id_oeuvre,num_saison,num_episode),
+    CONSTRAInt fk_oeuvre FOREIGN KEY(id_oeuvre) REFERENCES NOM_OEUVRE(id_oeuvre)
 );
 
 CREATE TABLE COMPTE (
@@ -43,8 +42,6 @@ CREATE TABLE COMPTE (
     mdp VARCHAR(50),
     CONSTRAINT pk_compte PRIMARY KEY(mail)
 );
-
-
 
 CREATE TABLE SOUS_COMPTE (
     mail VARCHAR(50),
@@ -65,20 +62,18 @@ CREATE TABLE VISIONNAGE (
     temps_visionnage NUMBER,
     CONSTRAINT pk_visionnage PRIMARY KEY(mail,id_sousCompte,id_oeuvre,num_saison,num_episode),
     CONSTRAINT fk_visionnage_Oeuvre FOREIGN KEY (id_oeuvre, num_saison, num_episode) REFERENCES OEUVRE(id_oeuvre, num_saison, num_episode),
-    CONSTRAINT fk_visionnage_compte FOREIGN KEY (mail) REFERENCES COMPTE(mail),
-    CONSTRAINT fk_visionnage_sousCompte FOREIGN KEY (id_sousCompte) REFERENCES SOUS_COMPTE(id_sousCompte)
+    CONSTRAINT fk_visionnage_sousCompte FOREIGN KEY (mail, id_sousCompte) REFERENCES SOUS_COMPTE(mail, id_sousCompte)
 );
 
 CREATE TABLE CLES
 (
     mail          VARCHAR(50),
     id_SousCompte NUMBER,
-    id_Oeuvre     NUMBER,
+    id_oeuvre     NUMBER,
     num_Saison    NUMBER,
     num_Episode   NUMBER,
-    CONSTRAINT pk_cles PRIMARY KEY (mail, id_SousCompte, id_Oeuvre, num_Saison, num_Episode),
-    CONSTRAINT fk_cles_Oeuvre FOREIGN KEY (id_Oeuvre, num_Saison, num_Episode) REFERENCES OEUVRE(id_oeuvre, num_saison, num_episode),
-    CONSTRAINT fk_cles_Compte FOREIGN KEY (mail) REFERENCES COMPTE(mail),
-    CONSTRAINT fk_cles_sousCompte FOREIGN KEY (id_SousCompte) REFERENCES SOUS_COMPTE(id_SousCompte)
+    CONSTRAINT pk_cles PRIMARY KEY (mail, id_SousCompte, id_oeuvre, num_Saison, num_Episode),
+    CONSTRAINT fk_cles_Oeuvre FOREIGN KEY (id_oeuvre, num_Saison, num_Episode) REFERENCES OEUVRE(id_oeuvre, num_saison, num_episode),
+    CONSTRAINT fk_cles_sousCompte FOREIGN KEY (mail, id_SousCompte) REFERENCES SOUS_COMPTE(mail, id_SousCompte)
 ) ;
 

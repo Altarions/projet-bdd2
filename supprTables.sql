@@ -1,0 +1,12 @@
+drop table CLIENTS cascade constraints;                                         
+drop table LIVRES cascade constraints;                                          
+drop table ACHATS cascade constraints;                                          
+drop table AVIS cascade constraints;                                            
+drop table NOM_OEUVRE cascade constraints;                                      
+drop table OEUVRE cascade constraints;                                          
+drop table COMPTE cascade constraints;                                          
+drop table SOUS_COMPTE cascade constraints;                                     
+drop table VISIONNAGE cascade constraints;                                      
+drop table CLES cascade constraints;                                            
+drop table S cascade constraints;                                               
+drop table T cascade constraints;                                               
