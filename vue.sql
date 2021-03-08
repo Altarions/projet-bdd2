@@ -1,23 +1,26 @@
-CREATE VIEW AfficheEssentiel 
+CREATE VIEW AfficheEssentiel
 AS
-Select COUNT (abonnement)
-From Compte 
-Where abonnement='Essentiel' ;
+Select abonnement, COUNT(*) as NombreCompteEssentiel
+From Compte
+Where abonnement = 'Essentiel'
+GROUP BY abonnement;
 
-CREATE VIEW AfficheStandard 
+CREATE VIEW AfficheStandard
 AS
-Select COUNT (abonnement)
-From Compte 
-Where abonnement='Standard' ;
+Select abonnement, COUNT(*) as NombreCompteStandard
+From Compte
+Where abonnement = 'Standard'
+GROUP BY abonnement;
 
 CREATE VIEW AffichePremium
 AS
-Select COUNT (abonnement)
-From Compte 
-Where abonnement='Premium' ;
+Select abonnement, COUNT(*) as NombreComptePremium
+From Compte
+Where abonnement = 'Premium'
+GROUP BY abonnement;
 
 CREATE VIEW AfficheTotal
 AS
-Select COUNT (*)
-From Compte 
-;
+Select COUNT(*) as NombreCompte
+From Compte
+GROUP BY abonnement;
