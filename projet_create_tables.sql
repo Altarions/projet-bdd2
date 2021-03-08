@@ -32,8 +32,11 @@ CREATE TABLE OEUVRE (
     genres VARCHAR(50),
     adjectif VARCHAR(50),
     CONSTRAINT pk_oeuvre PRIMARY KEY(id_oeuvre,num_saison,num_episode),
-    CONSTRAInt fk_oeuvre FOREIGN KEY(id_oeuvre) REFERENCES NOM_OEUVRE(id_oeuvre)
+    CONSTRAINT fk_oeuvre FOREIGN KEY(id_oeuvre) REFERENCES NOM_OEUVRE(id_oeuvre),
+    CONSTRAINT duree_oeuvre_check CHECK (duree > 0),
+    CONSTRAINT Categorie_age_oeuvre_check CHECK ((categorie_age = 0) or (categorie_age = 10) OR (categorie_age = 12) or (categorie_age = 16) or (categorie_age = 18))
 );
+--Categorie age = 0 représente tous publics
 
 CREATE TABLE COMPTE (
     mail VARCHAR(50),
@@ -47,8 +50,6 @@ CREATE TABLE SOUS_COMPTE (
     mail VARCHAR(50),
     id_sousCompte NUMBER,
     profil VARCHAR(50),
-    liste VARCHAR(50),
-    like_oeuvre VARCHAR(50),
     CONSTRAINT pk_sous_compte PRIMARY KEY(id_sousCompte,mail),
     CONSTRAINT fk_sous_compte FOREIGN KEY (mail) REFERENCES COMPTE (mail)
 );
@@ -60,6 +61,8 @@ CREATE TABLE VISIONNAGE (
     num_saison NUMBER,
     num_episode NUMBER,
     temps_visionnage NUMBER,
+    liste Boolean,
+    like_oeuvre VARCHAR(50),
     CONSTRAINT pk_visionnage PRIMARY KEY(mail,id_sousCompte,id_oeuvre,num_saison,num_episode),
     CONSTRAINT fk_visionnage_Oeuvre FOREIGN KEY (id_oeuvre, num_saison, num_episode) REFERENCES OEUVRE(id_oeuvre, num_saison, num_episode),
     CONSTRAINT fk_visionnage_sousCompte FOREIGN KEY (mail, id_sousCompte) REFERENCES SOUS_COMPTE(mail, id_sousCompte)
