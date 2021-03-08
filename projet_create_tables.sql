@@ -26,15 +26,15 @@ CREATE TABLE OEUVRE (
     nom_episode VARCHAR(50),
     duree NUMBER,
     date_sortie NUMBER,
-    distribution VARCHAR(50),
+    distribution VARCHAR(300),
     categorie_age NUMBER,
-    descriptif VARCHAR(50),
-    genres VARCHAR(50),
-    adjectif VARCHAR(50),
+    descriptif VARCHAR(300),
+    genres VARCHAR(300),
+    adjectif VARCHAR(100),
     CONSTRAINT pk_oeuvre PRIMARY KEY(id_oeuvre,num_saison,num_episode),
     CONSTRAINT fk_oeuvre FOREIGN KEY(id_oeuvre) REFERENCES NOM_OEUVRE(id_oeuvre),
     CONSTRAINT duree_oeuvre_check CHECK (duree > 0),
-    CONSTRAINT Categorie_age_oeuvre_check CHECK ((categorie_age = 0) or (categorie_age = 10) OR (categorie_age = 12) or (categorie_age = 16) or (categorie_age = 18))
+    CONSTRAINT Categorie_age_oeuvre_check CHECK ((categorie_age = 0) or (categorie_age = 13) or (categorie_age = 16) or (categorie_age = 18))
 );
 --Categorie age = 0 représente tous publics
 
@@ -61,7 +61,7 @@ CREATE TABLE VISIONNAGE (
     num_saison NUMBER,
     num_episode NUMBER,
     temps_visionnage NUMBER,
-    liste Boolean,
+    liste NUMBER(1) NOT NULL CHECK (liste in (0,1)),
     like_oeuvre VARCHAR(50),
     CONSTRAINT pk_visionnage PRIMARY KEY(mail,id_sousCompte,id_oeuvre,num_saison,num_episode),
     CONSTRAINT fk_visionnage_Oeuvre FOREIGN KEY (id_oeuvre, num_saison, num_episode) REFERENCES OEUVRE(id_oeuvre, num_saison, num_episode),
