@@ -1,3 +1,9 @@
+spool insert_tables_Projet.log
+
+prompt *************************************************************
+prompt ******************** DELETE TABLE *****************************
+prompt *************************************************************
+
 DELETE FROM CLES;
 DELETE FROM VISIONNAGE;
 DELETE FROM SOUS_COMPTE;
@@ -5,6 +11,11 @@ DELETE FROM COMPTE;
 DELETE FROM OEUVRE;
 DELETE FROM NOM_OEUVRE;
 DROP SEQUENCE num;
+
+prompt *************************************************************
+prompt ******************** INSERT TUPLES **************************
+prompt *************************************************************
+
 
 CREATE SEQUENCE num START WITH 1 INCREMENT BY 1 ;
 INSERT INTO NOM_OEUVRE VALUES(num.nextval,'Lupin');
@@ -37,10 +48,10 @@ INSERT INTO OEUVRE VALUES(num.currval,-1,-1,-1,83,1990,'Alex Vincent , Jenny Agu
 
 
 
-INSERT INTO COMPTE VALUES('cyprien@wanado.fr','Premiun',33710891389,'**');
+INSERT INTO COMPTE VALUES('cyprien@wanado.fr','Premium',33710891389,'**');
 INSERT INTO COMPTE VALUES('hugzer@xyz.net','Standard',33746567890,'**');
 INSERT INTO COMPTE VALUES('jm@gmail.com','Essentiel',33710290987,'**');
-INSERT INTO COMPTE VALUES('weshlesbg@gmail.com','Premiun',33780366982,'****');
+INSERT INTO COMPTE VALUES('weshlesbg@gmail.com','Premium',33780366982,'****');
 INSERT INTO COMPTE VALUES('isma@gmail.com','Standard',33712894753,'******');
 
 INSERT INTO SOUS_COMPTE VALUES('cyprien@wanado.fr',1,'cyprien');
@@ -76,3 +87,5 @@ INSERT INTO CLES VALUES('weshlesbg@gmail.com',3,3,1,2);
 INSERT INTO CLES VALUES('isma@gmail.com',1,9,-1,-1);
 INSERT INTO CLES VALUES('isma@gmail.com',1,5,3,3);
 INSERT INTO CLES VALUES('isma@gmail.com',1,6,1,3);
+
+spool off

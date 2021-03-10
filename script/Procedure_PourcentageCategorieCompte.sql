@@ -1,5 +1,4 @@
 set serveroutput on format wrapped;
-
 CREATE OR REPLACE PROCEDURE CalculMoyenne
 is
     nombreCPTEssentiel NUMBER :=0;

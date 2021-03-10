@@ -14,8 +14,8 @@ CREATE OR REPLACE TRIGGER verifTempsVisionnage_Trigger
         FROM OEUVRE
         WHERE OEUVRE.ID_OEUVRE = idOeuvreAcheck AND OEUVRE.NUM_EPISODE = numEpisode AND OEUVRE.NUM_SAISON = numSaison;
 
-        if(:new.temps_visionnage > newDuree)
-            then RAISE_APPLICATION_ERROR(-20001, 'Le temps de visionnage ne peut pas dépasser le temps de loeuvre !');
+        if(:new.temps_visionnage > newDuree OR :new.temps_visionnage < 0)
+            then RAISE_APPLICATION_ERROR(-20001, 'Le temps de visionnage est incorrect !');
         end if;
     end;
     /
