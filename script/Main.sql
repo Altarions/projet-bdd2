@@ -18,7 +18,7 @@
 --Appel des scripts de création des triggers
 @Trigger_UniciteVisionnage.sql
 @Trigger_VerifTempsVisionnage.sql
-@VerifAbonnement_Trigger.sql
+@Trigger_VerifAbonnement.sql
 
 --Appel du script d'insertion de la table
 @projet_insert_tables.sql
@@ -103,3 +103,12 @@ INSERT INTO SOUS_COMPTE VALUES('hugzer@xyz.net',3,'Ray Ponse');
 INSERT INTO SOUS_COMPTE VALUES('weshlesbg@gmail.com',5,'Alonzo Balmaské');
 --ajout d'un sous compte négatif avec un abonnement = Impossible
 INSERT INTO SOUS_COMPTE VALUES('weshlesbg@gmail.com',-1,'Alonzo Balmaské');
+
+--Procedure AjoutOeuvre
+--Oeuvre deja existante
+EXECUTE procedure_ajoutOeuvre('Lupin',1,4,'Chapitre 4',55,2021,'omar sy, ludivine sagnier, chlotilde hesme...',13,'Assane élabore un scénario pour entrer en contact avec un détenu qui peut le renseigner sur la mort de Babakar. Anne Pellegrini avoue un lourd secret.','français,séries inspirées de livres, séries d intrigues..','palpitant');
+EXECUTE procedure_ajoutOeuvre('Lupin',1,5,'Chapitre 5',60,2021,'omar sy, ludivine sagnier, chlotilde hesme...',13,'Assane élabore un scénario pour entrer en contact avec un détenu qui peut le renseigner sur la mort de Babakar. Anne Pellegrini avoue un lourd secret.','français,séries inspirées de livres, séries d intrigues..','palpitant');
+
+--nouvelles oeuvre
+EXECUTE procedure_ajoutOeuvre('La casa de papel',1,1,'Episode 1',48,2020,'ursula Corbero, alvaro Morte, itziar Ituno...',16,'Huit voleurs font une prise dotages dans la maison royale de la monnaie despagne...','Espagnol, Thrillers TV','palpitant, suspense');
+EXECUTE procedure_ajoutOeuvre('La casa de papel',1,2,'Episode 2',58,2020,'ursula Corbero, alvaro Morte, itziar Ituno...',16,'Huit voleurs font une prise dotages dans la maison royale de la monnaie despagne...','Espagnol, Thrillers TV','palpitant, suspense');
