@@ -33,6 +33,7 @@
 --Appel des scripts de création des procédures
 @Procedure_PourcentageCategorieCompte.sql
 @Procedure_TempsVisionnage.sql
+@Procedure_AjoutOeuvre.sql
 
 
 ------------------------------------TESTS------------------------------------
