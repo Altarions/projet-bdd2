@@ -12,8 +12,8 @@ BEGIN
     SELECT NOMBRECOMPTE into nombreCPTTotal FROM AFFICHETOTAL;
 
     DBMS_OUTPUT.put_line('Pourcentage de comptes Essentiel :' || (nombreCPTEssentiel/nombreCPTTotal)*100 || '%');
-    DBMS_OUTPUT.put_line('Pourcentage de comptes Essentiel :' || (nombreCPTStandard/nombreCPTTotal)*100 || '%');
-    DBMS_OUTPUT.put_line('Pourcentage de comptes Essentiel :' || (nombreCPTPremium/nombreCPTTotal)*100 || '%');
+    DBMS_OUTPUT.put_line('Pourcentage de comptes Standard :' || (nombreCPTStandard/nombreCPTTotal)*100 || '%');
+    DBMS_OUTPUT.put_line('Pourcentage de comptes Premium :' || (nombreCPTPremium/nombreCPTTotal)*100 || '%');
     DBMS_OUTPUT.put_line('Pour un total de : ' || (nombreCPTTotal) || ' Comptes');
 end;
 /

@@ -34,7 +34,7 @@ CREATE TABLE OEUVRE (
     CONSTRAINT pk_oeuvre PRIMARY KEY(id_oeuvre,num_saison,num_episode),
     CONSTRAINT fk_oeuvre FOREIGN KEY(id_oeuvre) REFERENCES NOM_OEUVRE(id_oeuvre),
     CONSTRAINT duree_oeuvre_check CHECK (duree > 0),
-    CONSTRAINT num_Saison_Episode_oeuvre_check CHECK ((num_saison > 0 or num_saison = -1) and (num_episode > 0 or num_episode = -1)),
+    CONSTRAINT num_SE_check CHECK ((num_saison > 0 or num_saison = -1) and (num_episode > 0 or num_episode = -1)),
     CONSTRAINT Categorie_age_oeuvre_check CHECK ((categorie_age = 0) or (categorie_age = 13) or (categorie_age = 16) or (categorie_age = 18))
 );
 --Categorie age = 0 représente tous publics
